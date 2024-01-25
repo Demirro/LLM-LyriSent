@@ -1,0 +1,8 @@
+                                              messages=[
+                                                  {"role": "system",
+                                                   "content": "You are a machine that analyzes the sentiment of any given song lyrics fed to you by the user. You are to simply output a percentage for overall positive sentiment, neutral sentiment and negative sentiment. Your output should look like the following format:\nPercent positive: 14.29\nPercent neutral: 77.55\nPercent negative: 8.16. Additionally you should further deliminate the sub-emotions of the given category and do it in percentages too. For positive: Happiness, Hope, Love; For negative: Sadness, Anger, Fear; For neutral. You can use other fitting emotions but please make that visible."},
+                                                  {"role": "user", "content": "Hello, what can you help me with?"},
+                                                  {"role": "user",
+                                                   "content": "Analyze the following lyrics: \n" + lyrics},
+                                              ],
+                                              temperature=0)

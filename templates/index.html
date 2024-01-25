@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Viewer</title>
+    <style>
+        table {
+            display: block;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .line-break {
+            white-space: pre-line;
+            overflow-y: scroll;
+            max-height: 200px; /* You can adjust the max-height as needed */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Project Contents</h1>
+    {% for filename, content in json_content.items() %}
+        <h2>{{ filename }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Artist</th>
+                    <th>Track</th>
+                    <th>Vader Sentiment</th>
+                    <th>GPT Response</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in content %}
+                    <tr>
+                        <td>{{ item.artist }}</td>
+                        <td>{{ item.track }}</td>
+                        <td><div class="line-break">{{ item.vader_sentiment }}</div></td>
+                        <td><div class="line-break">{{ item.gpt_response }}</div></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+</body>
+</html>

@@ -43,3 +43,45 @@ This experiment aims to test the waters of automatic sentiment annotation of mus
   - Let it correct already annotated data (could probably only be a small set of lyrical data)
   - Finetuning (probably out of scope for this course)
 - Compare all the results with known good sentiment analysis of the given texts and a handful of manual annotations
+
+
+## Preliminary Conclusions:
+LLMs (or rather GPT in this instance) may offer a quick way to gauge sentiment of song analysis.
+There are obviously pros and cons to using LLMs to annotate and analyze sentiment though:
+
+| Pro                                                            | Con                                                                                                                       |
+|----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| Descriptive                                                    | Not always the right conclusion                                                                                           |
+| Quick                                                          | Numbers and math are not strenghts of LLMs                                                                                |
+| Versatile (instructions can be tailored)                       | Tendencies to overrepresent certain categories (relative to Vader)                                                        |
+| Minimal (no) Preprocessing                                     | Less/no control/insight over lexicon and metrics used for sentiment (unless instructed --> less reliable than using NLTK) |
+| Results seem to be somewhat consistent                         | Sarcasm, jokes, inuendos, ambiguity is tricky (also for Vader) sentiment                                                  |
+| Somewhat language agnostic (more then lexica based approaches) | Time to respond may take long (depending on the complexity of the system prompt and length of response)                   |
+
+In this experiment I couldn't test or answer all the laid out thesis' and questions, because the complexity was higher than expected and due to unexpected setbacks.
+For further experiments I suggest using other methods than Vader (lexicon) for calculating the sentiment, like machine-learning-based and linguistic rules-based to compare with GPT responses.
+Also test interacting with the model more and asking follow up questions.
+
+## Running the code
+The logic to analyze songs is in the main.py. Running it will start a CLI. You can either choose the standard set of 10 songs used in testing:
+```python 
+songs_list = [
+            ('Childish Gambino','This is America'),
+            ('brakence','deepfacke'),
+            ('Peter Fox','Haus am See'),
+            ('Feu! Chatterton', "J'ai tout mon temps"),
+            ('Bruno Mars', 'Treasure'),
+            ('Ed Sheeran', 'Shape Of You'),
+            ('The Japanese House', 'Saw You In A Dream'),
+            ('Tom Misch', 'Disco Yes'),
+            ('Radiohead', 'Creep'),
+            ('Jacob Collier', 'Hideaway'),
+        ]
+```
+
+Or you can give any number of custom songs to check yourself.
+The results are saved in the Data/Lyrics
+
+running website.py will start a local flask server at http://127.0.0.1:5000 with tables containing the different tests
+
+P.S. You need a OpenAI API Key in a .env file and need to put your Genius API Token in the genius.py file for the code to run

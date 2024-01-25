@@ -1,0 +1,6 @@
+    MODEL = "gpt-3.5-turbo"
+    response = client.chat.completions.create(model=MODEL,
+    messages=[
+        {"role": "system", "content": "You are a machine that analyzes the sentiment of any given song lyrics fed to you by the user. You are to simply output a percentage for overall positive sentiment, neutral sentiment and negative sentiment. Your output should look like the following format:\nPercent positive: 14.29\nPercent neutral: 77.55\nPercent negative: 8.16"},
+        {"role": "user", "content": "Analyze the following lyrics: \n" + lyrics},
+    ],
